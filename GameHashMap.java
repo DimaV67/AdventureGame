@@ -4,6 +4,7 @@ public class GameHashMap<E> {
     // for simplicity size is taken as 2^5
     private static final int SIZE = 32;
     private Object[] table = new Object[SIZE];
+    private int size=0;
  
     /**
      */
@@ -76,11 +77,20 @@ public class GameHashMap<E> {
                 }
                 Entry entryInOldBucket = new Entry(k, v);
                 e.next = entryInOldBucket;
+               
             }
         } else {
             // new element in the map, hence creating new bucket
             Entry entryInNewBucket = new Entry(k, v);
             table[hash] = entryInNewBucket;
+            size++;
         }
     }
+    
+    public int size(){
+    	
+    	return size;
+    	
+    }
+  
 }
