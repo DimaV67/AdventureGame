@@ -16,14 +16,18 @@ public class Player {
 		
 		switch(key){
 			case 'z':
-				String tmp;
+				String tmp = null;
 				//pop current room
-				tmp =history.pop();
-				tmp =history.pop();
+				//we need to pop one before last element to get to the previous room
+				if (!history.IsEmpty()) tmp =history.pop(); else System.out.print("\nSorry, you are in the first room\n");
+				if (!history.IsEmpty()) tmp =history.pop(); else System.out.print("\nSorry, you are in the first room\n");
+			
 				if (tmp != null){
 					GoToRoom(tmp);
 				}
+				else System.out.print("\nSorry, you are in the first room\n");
 				break;
+				
 			case 'r':
 				Restart();
 				break;

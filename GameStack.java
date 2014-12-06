@@ -23,10 +23,12 @@ public class GameStack<E> {
   }
 
   public boolean IsEmpty(){
-	 if (elements.length==0){
-		 return true;
-	 }
-	 else return false;
+
+	  for (int i=0;i<elements.length;i++){
+		  if (elements[i]!=null)  return false;
+	  }
+
+	  return true;
 	  
   }
   private void ensureCapa() {
