@@ -22,6 +22,13 @@ public class GameStack<E> {
     return e;
   }
 
+  public boolean IsEmpty(){
+	 if (elements.length==0){
+		 return true;
+	 }
+	 else return false;
+	  
+  }
   private void ensureCapa() {
     int newSize = elements.length * 2;
     elements = Arrays.copyOf(elements, newSize);
