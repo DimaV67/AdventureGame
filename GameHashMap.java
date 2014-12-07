@@ -1,9 +1,13 @@
+import java.util.Iterator;
+
 
 
 public class GameHashMap<E> {
     // for simplicity size is taken as 2^5
-    private static final int SIZE = 32;
+    private static final int SIZE = 16;
     private Object[] table = new Object[SIZE];
+    private Entry head = null;
+    private Entry current = null;
     private int size=0;
  
     /**
@@ -12,6 +16,7 @@ public class GameHashMap<E> {
         final String key;
         Object value;
         Entry next;
+        int index;
  
         Entry(String k, E v) {
             key = k;
@@ -31,6 +36,7 @@ public class GameHashMap<E> {
         public String getKey() {
             return key;
         }
+
     }
  
     /**
@@ -82,7 +88,12 @@ public class GameHashMap<E> {
         } else {
             // new element in the map, hence creating new bucket
             Entry entryInNewBucket = new Entry(k, v);
+            entryInNewBucket.index = size;
             table[hash] = entryInNewBucket;
+            
+            //remember head of the list
+            if (head==null) head = entryInNewBucket; 
+            current = head;
             size++;
         }
     }
@@ -91,6 +102,19 @@ public class GameHashMap<E> {
     	
     	return size;
     	
+    }
+
+   
+    public boolean hasNext() {
+        return !(size() == current.index);
+    }
+    
+    @SuppressWarnings("unchecked")
+    public E next() {
+        if(hasNext()) {
+        	current=current.next;
+        }
+		return (E) current; 
     }
   
 }
