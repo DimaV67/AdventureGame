@@ -1,7 +1,7 @@
 JAVASRC    = AdventureGame.java GameHashMap.java GameStack.java map.java auxlib.java Room.java Player.java
 SOURCES    = ${JAVASRC} Makefile
 ALLSOURCES = ${SOURCES}
-MAINCLASS  = xref
+MAINCLASS  = AdventureGame
 CLASSES    = ${patsubst %.java, %.class, ${JAVASRC}}
 
 all: ${CLASSES}
