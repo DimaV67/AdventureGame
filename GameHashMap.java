@@ -13,33 +13,6 @@ public class GameHashMap<E> {
     int index=0;
     
  
-    class Entry {
-        final String key;
-        Object value;
-        Entry next;
-        int index;
- 
-        Entry(String k, E v) {
-            key = k;
-            value = v;
-        }
-
-        @SuppressWarnings("unchecked")
-        public E getValue() {
-        	E e = (E) value;
-            return e;
-        }
- 
-        public void setValue(E value) {
-            this.value = value;
-        }
- 
-        public String getKey() {
-            return key;
-        }
-
-    }
- 
     /**
      * Returns the entry associated with the specified key in the
      * HashMap.  Returns null if the HashMap contains no mapping
@@ -48,7 +21,7 @@ public class GameHashMap<E> {
     @SuppressWarnings("unchecked")
     public E get(String k) {
         int hash = Math.abs(k.hashCode() % SIZE);
-        Entry e = (GameHashMap<E>.Entry) table[hash];
+        Entry<E> e = (Entry<E>) table[hash];
  
         // if bucket is found then traverse through the linked list and
         // see if element is present
@@ -69,7 +42,7 @@ public class GameHashMap<E> {
     @SuppressWarnings("unchecked")
     public void put(String k, E v) {
         int hash = Math.abs(k.hashCode() % SIZE);
-        Entry e = (GameHashMap<E>.Entry) table[hash];
+        Entry<E> e = (Entry<E>) table[hash];
         if(e != null) {
             // it means we are trying to insert duplicate
             // key-value pair, hence overwrite the current
@@ -82,14 +55,14 @@ public class GameHashMap<E> {
                 while(e.next != null) {
                     e = e.next;
                 }
-                Entry entryInOldBucket = new Entry(k, v);
+                Entry<E> entryInOldBucket = new  Entry<E>(k, v);
                 e.next = entryInOldBucket;
                 ar.add(k);
                
             }
         } else {
             // new element in the map, hence creating new bucket
-            Entry entryInNewBucket = new Entry(k, v);
+            Entry<E> entryInNewBucket = new Entry<E>(k, v);
            // entryInNewBucket.index = size;
             table[hash] = entryInNewBucket;
             ar.add(k); 
@@ -120,10 +93,10 @@ public class GameHashMap<E> {
     @SuppressWarnings("unchecked")
     public void Print()
     {
-    	Entry e= null;
+    	Entry<E> e= null;
     	String k=null;
     	for (int i=0;i<SIZE;i++){
-    		e = (GameHashMap<E>.Entry) table[i];
+    		e = (Entry<E>) table[i];
 	    		while(e != null) {
 	    			if (k!=e.key){
 	    				k=e.key;

@@ -10,7 +10,7 @@ public class AdventureGame {
 	
 	
 	if (args.length==0) {
-		auxlib.die("Missing file name");
+		auxlib.die("Missing file name");	
 	}
 	else{
     	    		

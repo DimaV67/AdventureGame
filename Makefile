@@ -1,4 +1,14 @@
-JAVASRC    = AdventureGame.java GameHashMap.java GameStack.java map.java auxlib.java Room.java Player.java
+JAVASRC    =\
+AdventureGame.java \
+GameHashMap.java \
+Entry.java \
+RoomOption.java \
+GameStack.java \
+map.java \
+auxlib.java \
+Room.java \
+Player.java
+
 SOURCES    = ${JAVASRC} Makefile
 ALLSOURCES = ${SOURCES}
 MAINCLASS  = AdventureGame

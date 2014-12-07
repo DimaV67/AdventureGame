@@ -3,8 +3,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
 public class Room{
 	String Name;
 	List <String> Descriptions;
@@ -16,11 +14,6 @@ public class Room{
 	int lastkey =0;
 	int SIZE = 12;
 
-	class RoomOption{
-		String OptionName;
-		String RoomTag; 
-	}
-	
 	public Room(){
 		
 		Descriptions = new ArrayList <String>();
