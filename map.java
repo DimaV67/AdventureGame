@@ -35,13 +35,13 @@ public class map {
 					CurrentRoom.AddDescription(line.substring(1).trim());
 				
 					//update hash map
-					GameWorld.put(CurrentRoom.Name, CurrentRoom);
+					//GameWorld.put(CurrentRoom.Name, CurrentRoom);
 			}
 				
 				//Tag
 				else if (data[0].equals ("t")) {
 					CurrentRoom.AddTag(data[1]);
-					GameWorld.put(CurrentRoom.Name, CurrentRoom);	
+					//GameWorld.put(CurrentRoom.Name, CurrentRoom);	
 
 				}
 				//Options
@@ -49,7 +49,7 @@ public class map {
 					
 					CurrentRoom.AddOption(line.substring(1).trim());
 					//update hash map
-					GameWorld.put(CurrentRoom.Name, CurrentRoom);
+					//GameWorld.put(CurrentRoom.Name, CurrentRoom);
 			
 				}
 				//Make Room

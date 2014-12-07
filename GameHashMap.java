@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 
 public class GameHashMap<E> {
-    // for simplicity size is taken as 2^5
+    // for simplicity size is taken as 2^4
     private static final int SIZE = 16;
     private Object[] table = new Object[SIZE];
-    private Entry head = null;
-    private Entry current = null;
-    private int size=0;
  
-    /**
-     */
+    List <String> ar = new ArrayList <String>();
+    int index=0;
+    
+ 
     class Entry {
         final String key;
         Object value;
@@ -83,38 +84,54 @@ public class GameHashMap<E> {
                 }
                 Entry entryInOldBucket = new Entry(k, v);
                 e.next = entryInOldBucket;
+                ar.add(k);
                
             }
         } else {
             // new element in the map, hence creating new bucket
             Entry entryInNewBucket = new Entry(k, v);
-            entryInNewBucket.index = size;
+           // entryInNewBucket.index = size;
             table[hash] = entryInNewBucket;
-            
-            //remember head of the list
-            if (head==null) head = entryInNewBucket; 
-            current = head;
-            size++;
+            ar.add(k); 
         }
     }
     
     public int size(){
     	
-    	return size;
+    	return ar.size();
     	
     }
 
    
     public boolean hasNext() {
-        return !(size() == current.index);
+        return ar.size()>index;
+    }
+    
+    public E next() {
+    	E tmp= null;
+    	
+        if(hasNext()) {
+        	tmp=this.get(ar.get(index));
+        	index++;
+        }
+		return tmp;
     }
     
     @SuppressWarnings("unchecked")
-    public E next() {
-        if(hasNext()) {
-        	current=current.next;
-        }
-		return (E) current; 
+    public void Print()
+    {
+    	Entry e= null;
+    	String k=null;
+    	for (int i=0;i<SIZE;i++){
+    		e = (GameHashMap<E>.Entry) table[i];
+	    		while(e != null) {
+	    			if (k!=e.key){
+	    				k=e.key;
+	    				System.out.print(e.key+" ");
+	    			}
+	    			 e = e.next;
+	            }
+    	}
     }
   
 }

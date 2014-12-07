@@ -34,6 +34,7 @@ public class Player {
 				
 			case 'y':
 				PrintAdventure();
+				//game.GameWorld.Print();
 				break;
 				
 			case 'q':
@@ -49,10 +50,14 @@ public class Player {
 	
 	public void PrintAdventure(){
 		//add code here
+		Room tmp;
 		while (game.GameWorld.hasNext()){
-			System.out.print(game.GameWorld.next().Name);
+			tmp = game.GameWorld.next();
+			System.out.print("Room:"+ tmp.Name+"\n");
+			tmp.PrintOptions();
+			}
 		}
-	}
+
 	
 	public int GoToRoom(String key){
 				
@@ -67,7 +72,7 @@ public class Player {
 		
 		//print room info
 		CurrentRoom.PrintInfo();
-		CurrentRoom.PrintOptions();
+		CurrentRoom.PrintAllOptions();
 		
 		return 0;
 	}

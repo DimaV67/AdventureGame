@@ -12,7 +12,7 @@ public class Room{
 
 	//Hashmap of options, functions and keyboard keys
 	Map<Character, RoomOption> Options = new HashMap<Character, RoomOption>();
-	char[] actionkeys = {'a','b','c','d','e','f','g','h','i','j','k','l','r','q','y','z'};
+	char[] actionkeys = {'a','b','c','d','e','f','g','h','i','j','k','l','q','r','y','z'};
 	int lastkey =0;
 	int SIZE = 12;
 
@@ -51,10 +51,18 @@ public class Room{
 	}
 	
 	
-	public void PrintOptions(){
+	public void PrintAllOptions(){
 		for (char c:actionkeys){
 			if(Options.get(c) != null){
 			System.out.print("\n"+c+"-"+ Options.get(c).OptionName);
+			}
+		}
+	}
+	
+	public void PrintOptions(){
+		for (char c:actionkeys){
+			if(Options.get(c) != null&&c<'q'){
+			System.out.print("--"+c+"-"+ "Option: "+Options.get(c).OptionName+"Tag: "+Options.get(c).RoomTag+"\n");
 			}
 		}
 	}
