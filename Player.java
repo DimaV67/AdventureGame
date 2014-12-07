@@ -49,6 +49,9 @@ public class Player {
 	
 	public void PrintAdventure(){
 		//add code here
+		while (game.GameWorld.hasNext()){
+			System.out.print(game.GameWorld.next().Name);
+		}
 	}
 	
 	public int GoToRoom(String key){
