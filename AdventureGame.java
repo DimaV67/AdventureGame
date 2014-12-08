@@ -10,7 +10,8 @@ public class AdventureGame {
 	
 	
 	if (args.length==0) {
-		auxlib.die("Missing file name");	
+		System.out.print("Please enter a valid game file name!\n");
+		System.exit(1);	
 	}
 	else{
     	    		
@@ -25,7 +26,7 @@ public class AdventureGame {
             
         }catch (IOException error) {
             auxlib.warn (error.getMessage());
-            auxlib.exit();
+            System.exit(1);
         }
 	
 	// initialize PLayer and send him to the first room
@@ -33,10 +34,12 @@ public class AdventureGame {
 		p.GoToRoom(m.FirstRoomTag);
 		
 		//tell player to start run the game
-        p.Run();
-
-        auxlib.exit();
-
+        if (p.Run()==0){
+        	System.exit(0);
+        }
+        else{
+        	System.exit(1);
+        };
 		
 	}
 
