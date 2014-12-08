@@ -30,7 +30,7 @@ public class map {
      		line = scan.nextLine();
 			data = line.split(" ");
 				//Description
-				if (data[0].equals("d")) {
+				if (data[0].equals("d")&&CurrentRoom!=null) {
 					//read description from the file and update Room Description property
 					CurrentRoom.AddDescription(line.substring(1).trim());
 				
@@ -39,13 +39,13 @@ public class map {
 			}
 				
 				//Tag
-				else if (data[0].equals ("t")) {
+				else if (data[0].equals ("t")&&CurrentRoom!=null) {
 					CurrentRoom.AddTag(data[1]);
 					//GameWorld.put(CurrentRoom.Name, CurrentRoom);	
 
 				}
 				//Options
-				else if (data[0].equals("o")) {
+				else if (data[0].equals("o")&&CurrentRoom!=null) {
 					
 					CurrentRoom.AddOption(line.substring(1).trim());
 					//update hash map
