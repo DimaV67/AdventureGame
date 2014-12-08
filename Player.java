@@ -3,6 +3,7 @@ import java.io.IOException;
 
 public class Player {
 	Room CurrentRoom= null;
+
 	
 	//stack to keep the history
 	GameStack<String> history = new GameStack<String>();
@@ -19,8 +20,16 @@ public class Player {
 				String tmp = null;
 				//pop current room
 				//we need to pop one before last element to get to the previous room
-				if (!history.IsEmpty()) tmp =history.pop(); else System.out.print("\nSorry, you are in the first room\n");
-				if (!history.IsEmpty()) tmp =history.pop(); else System.out.print("\nSorry, you are in the first room\n");
+				if (!history.IsEmpty()) {
+					tmp =history.pop();}
+				else {
+					System.out.print("\nSorry, you are in the first room\n");
+					}
+				if (!history.IsEmpty()) {
+					tmp =history.pop(); }
+				else {
+					System.out.print("\nSorry, you are in the first room\n");
+				}
 			
 				if (tmp != null){
 					GoToRoom(tmp);
@@ -38,7 +47,8 @@ public class Player {
 				break;
 				
 			case 'q':
-				System.exit(0);
+				//System.exit(0);
+				break;
 				
 			default:
 				if(CurrentRoom.Options.get(key)!=null) GoToRoom(CurrentRoom.Options.get(key).RoomTag);
@@ -73,6 +83,7 @@ public class Player {
 		//print room info
 		CurrentRoom.PrintInfo();
 		CurrentRoom.PrintAllOptions();
+		System.out.print("\n");
 		
 		return 0;
 	}
@@ -97,14 +108,17 @@ public class Player {
 						if ( CurrentRoom.Options.get(c)!=null){
 							//CurrentRoom.Options.get(c).runCommand(c);
 							DoTheOption(c);
+							System.out.println("Please enter a command:");
 						}
 					} catch (IOException e) {
 						
 						e.printStackTrace();
+						return 1;
 					}
 			}
 			while (c!='q');
 			
+			System.out.print("\nThank you for playing! Good bye!\n");
 			return 0;
 		}
 	
